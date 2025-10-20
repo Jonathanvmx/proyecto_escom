@@ -9,6 +9,8 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+node_modules/
+.babelrc
 
 # ─────────────────────────────
 # Configs sensibles o personales
