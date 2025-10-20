@@ -1,0 +1,20 @@
+{
+  "login_title": "Login",
+  "email_placeholder": "Email ID",
+  "password_placeholder": "Password",
+  "remember_me": "Remember me",
+  "forgot_password": "Forgot Password?",
+  "login_button": "LOGIN",
+  "vinculo": "Don't have an account?",
+  "register_title": "Create Account",
+  "name_placeholder": "Full Name",
+  "register_button": "REGISTER",
+  "have_account_link": "Already have an account?",
+  "select_company_placeholder": "Select your company",
+  "dashboard_title": "Mis Tickets",
+  "dashboard_subtitle": "Here you can view and manage all your support requests.",
+  "status": "Status",
+  "no_tickets_message": "You don't have any open tickets yet.",
+  "loading_message": "Loading tickets...",
+  "menu_dashboard": "Menu"
+}

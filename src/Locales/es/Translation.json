@@ -1,0 +1,20 @@
+{
+  "login_title": "Iniciar sesión",
+  "register_title": "Crear cuenta",
+  "email_placeholder": "Correo electrónico",
+  "password_placeholder": "Contraseña",
+  "remember_me": "Recordarme",
+  "name_placeholder": "Nombre Completo",
+  "forgot_password": "¿Olvidaste tu contraseña?",
+  "login_button": "ACCEDER",
+  "vinculo": "¿No tienes una cuenta?",
+  "register_button": "REGISTRARSE",
+  "have_account_link": "¿Ya tienes una cuenta?",
+  "company_label": "Company Name",
+  "select_company_placeholder": "Selecciona tu compañia",
+  "dashboard_title": "Mis Tickets",
+  "dashboard_subtitle": "Aquí puedes ver y gestionar todas tus solicitudes de soporte.",
+  "status": "Estado",
+  "no_tickets_message": "Aún no tienes tickets abiertos.",
+  "loading_message": "Cargando tickets..."
+}
