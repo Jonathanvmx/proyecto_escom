@@ -1,6 +1,0 @@
-.app-header .language-btn {
-    background: rgba(255, 255, 255, 0.2); /* Fondo más claro para el botón */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Borde sutil para destacarlo */
-    transition: transform 0.2s ease-in-out;
-    color: #4e586e;
-}
