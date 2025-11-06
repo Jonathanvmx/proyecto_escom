@@ -4,7 +4,8 @@
   "description": "Sistema de gestión de tickets empresarial desarrollado con React y Node.js, desplegado en Azure. Esta aplicación permite la gestión completa de tickets de soporte técnico, con características avanzadas como internacionalización, tema oscuro/claro, autenticación empresarial y una interfaz responsiva.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
