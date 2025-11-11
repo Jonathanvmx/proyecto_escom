@@ -7,8 +7,10 @@ const HomePage = () => {
         <h1>Ticko</h1>
         <nav>
           <Link href="/">Inicio</Link> | 
-          <Link href="/acerca">Acerca de</Link> | 
-          <Link href="/contacto">Contacto</Link>
+          <Link href="/aboutPage">Acerca de</Link> | 
+          <Link href="/contactPage">Contacto</Link> | 
+          <Link href="/login">Iniciar Sesión</Link> | 
+          <Link href="/register">Registrarse</Link>
         </nav>
       </header>
 
@@ -33,6 +35,7 @@ const HomePage = () => {
         <p>&copy; {new Date().getFullYear()} Ticko. Todos los derechos reservados.</p>
       </footer>
     </div>
+
   )
 }
 
