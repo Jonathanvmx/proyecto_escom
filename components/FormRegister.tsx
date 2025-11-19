@@ -2,9 +2,9 @@
 
 import { z } from "zod";
 import { registerSchema } from "@/lib/zod";
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { Button } from "@/components/ui/button"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,9 +12,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 
 const FormRegister = () => {
   const form = useForm<z.infer<typeof registerSchema>>({
@@ -25,17 +24,30 @@ const FormRegister = () => {
       name: "",
       phone: "",
     },
-  })
+  });
 
   function onSubmit(values: z.infer<typeof registerSchema>) {
-        console.log(values)
+    console.log(values);
   }
 
   return (
-    <div>
-        <h1>Register</h1>
-        <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Nombre Completo</FormLabel>
+              <FormControl>
+                <Input placeholder="Tu nombre" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        
         <FormField
           control={form.control}
           name="email"
@@ -43,7 +55,25 @@ const FormRegister = () => {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="Email" {...field} />
+                <Input
+                  type="email"
+                  placeholder="usuario@tuempresa.com"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Teléfono</FormLabel>
+              <FormControl>
+                <Input type="tel" placeholder="Ej. 55 1234 5678" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -51,51 +81,24 @@ const FormRegister = () => {
         />
 
         <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input type="password" placeholder="Password" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input type="password" placeholder="••••••••" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-        <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input type="text" placeholder="Name" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-        <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone</FormLabel>
-                <FormControl>
-                  <Input type="tel" placeholder="Phone" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="w-full">
+          Crear Cuenta
+        </Button>
       </form>
     </Form>
-    </div>
-  )
-}
-export default FormRegister
+  );
+};
+export default FormRegister;
