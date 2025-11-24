@@ -14,8 +14,16 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { register } from "@/actions/register";
+import { useState, useTransition } from "react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { ExclamationTriangleIcon, CheckCircledIcon } from "@radix-ui/react-icons";
 
 const FormRegister = () => {
+  const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
+  const [isPending, startTransition] = useTransition();
+
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -27,13 +35,25 @@ const FormRegister = () => {
   });
 
   function onSubmit(values: z.infer<typeof registerSchema>) {
-    console.log(values);
+    setError("");
+    setSuccess("");
+
+    startTransition(() => {
+      register(values).then((data) => {
+        if (data.error) {
+          setError(data.error);
+        }
+        if (data.success) {
+          setSuccess(data.success);
+        }
+      });
+    });
   }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        
+
         <FormField
           control={form.control}
           name="name"
@@ -41,13 +61,13 @@ const FormRegister = () => {
             <FormItem>
               <FormLabel>Nombre Completo</FormLabel>
               <FormControl>
-                <Input placeholder="Tu nombre" {...field} />
+                <Input disabled={isPending} placeholder="Tu nombre" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        
+
         <FormField
           control={form.control}
           name="email"
@@ -56,6 +76,7 @@ const FormRegister = () => {
               <FormLabel>Email</FormLabel>
               <FormControl>
                 <Input
+                  disabled={isPending}
                   type="email"
                   placeholder="usuario@tuempresa.com"
                   {...field}
@@ -65,7 +86,7 @@ const FormRegister = () => {
             </FormItem>
           )}
         />
-        
+
         <FormField
           control={form.control}
           name="phone"
@@ -73,7 +94,7 @@ const FormRegister = () => {
             <FormItem>
               <FormLabel>Teléfono</FormLabel>
               <FormControl>
-                <Input type="tel" placeholder="Ej. 55 1234 5678" {...field} />
+                <Input disabled={isPending} type="tel" placeholder="Ej. 55 1234 5678" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -87,14 +108,30 @@ const FormRegister = () => {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input type="password" placeholder="••••••••" {...field} />
+                <Input disabled={isPending} type="password" placeholder="••••••••" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        <Button type="submit" className="w-full">
+        {error && (
+          <Alert variant="destructive">
+            <ExclamationTriangleIcon className="h-4 w-4" />
+            <AlertTitle>Error</AlertTitle>
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+
+        {success && (
+          <Alert className="text-green-600 border-green-600">
+            <CheckCircledIcon className="h-4 w-4" />
+            <AlertTitle>Éxito</AlertTitle>
+            <AlertDescription>{success}</AlertDescription>
+          </Alert>
+        )}
+
+        <Button disabled={isPending} type="submit" className="w-full">
           Crear Cuenta
         </Button>
       </form>
